@@ -1,0 +1,36 @@
+.posts {
+    margin-top: 6%;
+    width: 100%;
+}
+
+.post {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.user {
+    margin-bottom: 2dvh;
+}
+
+.user > img {
+    height: 7dvh;
+}
+
+.actions {
+    margin-top: 2dvh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.info {
+    margin-right: 3dvh;
+}
+
+.posted-at {
+    margin-top: 2dvh;
+}
