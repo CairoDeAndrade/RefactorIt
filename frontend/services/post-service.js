@@ -1,7 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+function listAllPosts() {
     const postContainer = document.getElementById("post-container");
 
-    // Fetch posts from backend
     fetch("http://localhost:8080/posts")
         .then(response => response.json())
         .then(posts => {
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
 
-                // Append the post to the container
                 postContainer.appendChild(postCard);
             });
         })
@@ -96,4 +94,42 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error fetching posts:", error);
             postContainer.innerHTML = "<p>Failed to load posts.</p>";
         });
+}
+
+// Attach form submission handler
+document.getElementById("create-post-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const postData = {
+        owner: document.getElementById("owner").value,
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        imageUrl: document.getElementById("imageUrl").value,
+        repositoryUrl: document.getElementById("repositoryUrl").value
+    };
+
+    createPost(postData);
 });
+
+function createPost(postData) {
+    return fetch("http://localhost:8080/posts", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Failed to create post");
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert("Post created successfully!");
+    })
+    .catch(error => {
+        console.error("Error creating post:", error);
+        alert("Error creating post:", error);
+    });
+}

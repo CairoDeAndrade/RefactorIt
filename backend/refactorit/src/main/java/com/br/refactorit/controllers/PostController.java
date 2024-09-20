@@ -3,6 +3,7 @@ package com.br.refactorit.controllers;
 import com.br.refactorit.domain.post.PostEntity;
 import com.br.refactorit.domain.post.PostService;
 import com.br.refactorit.domain.post.dtos.PostRequestDto;
+import com.br.refactorit.domain.post.dtos.PostResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,11 @@ public class PostController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PostEntity>> listAll() {
-        return ResponseEntity.ok(service.listAll());
+    public ResponseEntity<List<PostResponseDto>> listAll() {
+        return ResponseEntity.ok(
+                service.listAll().stream()
+                        .map(PostResponseDto::new)
+                        .toList()
+        );
     }
 }

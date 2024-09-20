@@ -9,7 +9,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="post.css" />
+    <link rel="stylesheet" href="home.css" />
     <link rel="stylesheet" href="/common/common.css" />
     <link
       rel="stylesheet"
@@ -20,7 +20,7 @@
   <body>
     <!-- toolbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="/components/home/home.html">RefactorIt</a>
+      <a class="navbar-brand" href="#">RefactorIt</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -54,40 +54,18 @@
       </div>
     </nav>
 
-    <!-- Create New Post Form -->
+    <!-- posts  -->
     <main class="bg-light posts">
-      <div class="post card mb-4 box-shadow">
-        <div class="card-body">
-          <form id="create-post-form">
-            <div class="form-group">
-              <label for="owner">Owner</label>
-              <input type="text" class="form-control" id="owner" placeholder="Enter your name" required />
-            </div>
-            <div class="form-group">
-              <label for="title">Post Title</label>
-              <input type="text" class="form-control" id="title" placeholder="Enter post title" required />
-            </div>
-            <div class="form-group">
-              <label for="description">Description</label>
-              <textarea class="form-control" id="description" rows="3" placeholder="Enter post description" required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="imageUrl">Image URL</label>
-              <input type="url" class="form-control" id="imageUrl" placeholder="Enter image URL" required />
-            </div>
-            <div class="form-group">
-              <label for="repositoryUrl">Repository URL</label>
-              <input type="url" class="form-control" id="repositoryUrl" placeholder="Enter repository URL" required />
-            </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
-          </form>
-        </div>
-      </div>
+      <div id="post-container"></div> 
     </main>
+    
 
-    <!-- Post service -->
+    <!-- Post service  -->
+     <script>
+      document.addEventListener("DOMContentLoaded", () => listAllPosts());
+     </script>
     <script src="/services/post-service.js"></script>
-
+    
     <!-- bootstrap -->
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

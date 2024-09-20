@@ -1,0 +1,27 @@
+.user {
+    margin-bottom: 2dvh;
+}
+
+.user > img {
+    height: 7dvh;
+    cursor: pointer;
+}
+
+.actions {
+    margin-top: 2dvh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.action {
+    cursor: pointer;
+}
+
+.info {
+    margin-right: 3dvh;
+}
+
+.posted-at {
+    margin-top: 2dvh;
+}
