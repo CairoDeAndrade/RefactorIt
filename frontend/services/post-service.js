@@ -20,7 +20,7 @@ function listAllPosts() {
               <p class="card-text">${post.description}</p>
 
               <div class="img">
-                <img class="card-img-top" src="${post.imageUrl}" alt="${post.title}" style="height: 60dvh; width: 100%; margin-bottom: 2dvh;" />
+                <img class="card-img-top" src="${post.imageUrl}" alt="${post.title}" style="height: 40dvh; width: 100%; margin-bottom: 2dvh;" />
               </div>
 
               <!-- Code link -->
@@ -92,11 +92,10 @@ function listAllPosts() {
         })
         .catch(error => {
             console.error("Error fetching posts:", error);
-            postContainer.innerHTML = "<p>Failed to load posts.</p>";
+            postContainer.innerHTML = "<h3>Failed to load posts.</h3>";
         });
 }
 
-// Attach form submission handler
 document.getElementById("create-post-form").addEventListener("submit", function(event) {
     event.preventDefault();
 
@@ -125,8 +124,9 @@ function createPost(postData) {
         }
         return response.json();
     })
-    .then(data => {
+    .then(() => {
         alert("Post created successfully!");
+        document.getElementById('create-post-form').reset();
     })
     .catch(error => {
         console.error("Error creating post:", error);
